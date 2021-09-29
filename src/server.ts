@@ -1,4 +1,5 @@
-import express from "express";
+import express, { Request, Response } from "express";
+
 import bodyParser from "body-parser";
 import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
@@ -27,8 +28,8 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
   /**************************************************************************** */
-  app.get("/filteredimage", async (req, res) => {
-    let inputUrl = req.query.image_url;
+  app.get("/filteredimage", async (req:Request, res:Response) => {
+    let inputUrl:string = req.query.image_url;
     const pattern = /(https?:\/\/.*\.(?:png|jpg))/i;
     if (inputUrl == null || inputUrl == undefined) {
       return res.status(400).send("Please input an image url path");
