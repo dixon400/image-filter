@@ -29,7 +29,7 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
   /**************************************************************************** */
   app.get("/filteredimage", async (req:Request, res:Response) => {
-    let inputUrl:string = req.query.image_url;
+    const inputUrl: string  = req.query.image_url.toString();
     const pattern = /(https?:\/\/.*\.(?:png|jpg))/i;
     if (inputUrl == null || inputUrl == undefined) {
       return res.status(400).send("Please input an image url path");
